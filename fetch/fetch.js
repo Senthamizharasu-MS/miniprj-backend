@@ -7,19 +7,42 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     client.connect(url, (err, conn) => {
-        if (err){
+        if (err) {
             console.log("Error in connection ", err);
         }
-        else{
-            const db = conn.db("nodedb");
+        else {
+            const db = conn.db("miniprj");
             db.collection("products").find().toArray((err, array) => {
-                if (err){
+                if (err) {
                     console.log("Error in fetching ", err);
                 }
-                else{
+                else {
                     console.log("Data fetched successfully");
                     res.json(array);
                     conn.close();
+                }
+            })
+        }
+    })
+})
+
+router.get('/cart', async (req, res) => {
+    let uname = req.query.uname;
+    let obj = { uname };
+
+    client.connect(url, (err, conn) => {
+        if (err) {
+            console.log("Error in connection ", err);
+        }
+        else {
+            let db = conn.db("miniprj")
+            db.collection('cart').find(obj).toArray((err, array) => {
+                if (err)
+                    console.log(err)
+                else {
+                    res.json(array)
+                    console.log(`Cart response for ${obj.uname} sent`)
+                    conn.close()
                 }
             })
         }
