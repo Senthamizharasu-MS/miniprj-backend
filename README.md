@@ -2,12 +2,18 @@
 ## This is a simple backend server for E-Commerce website
 ### This project is made using Node.js, Express.js, MongoDB.
 
+## Requirements
+### 1. Node.js
+### 2. MongoDB
+### 3. Express.js 
+### 4. Postman
+
 ## How to run this project
 ### 1. Clone this repository
 ### 2. Install all the dependencies
 ### 3. Run the server using `npm start`
 ### 4. Open `http://localhost:8080/` in your browser
-### 5. You can also use `nodemon` to run the server
+### 5. Use `Postman` to test the API endpoints
 
 ## API Endpoints
 ### 1. `/fetch` - GET call. To fetch all the products
